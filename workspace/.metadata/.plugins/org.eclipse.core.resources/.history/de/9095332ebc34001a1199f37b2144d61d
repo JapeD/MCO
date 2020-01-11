@@ -81,8 +81,8 @@ int main(void)
         kGPIO_DigitalOutput, 0,
     };
     /* Variable Declaration */
-    char upSwing[2];
-    char downSwing[2];
+    char upSwing;
+    char downSwing;
     /* Init board hardware. */
         BOARD_InitPins();
         BOARD_BootClockRUN();
@@ -104,10 +104,9 @@ int main(void)
 
     while (1)
     {
-        /* upSwing Delay and toggle*/
+        /* Delay 1000 ms */
         SysTick_DelayTicks(upSwing[0]);
         GPIO_PortToggle(BOARD_LED_GPIO, 1u << BOARD_LED_GPIO_PIN);
-        /* downSwing Delay and toggle*/
         SysTick_DelayTicks(downSwing[0]);
         GPIO_PortToggle(BOARD_LED_GPIO, 1u << BOARD_LED_GPIO_PIN);
     }
