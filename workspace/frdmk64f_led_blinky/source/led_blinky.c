@@ -33,7 +33,9 @@
 
 #include "board.h"
 #include "fsl_gpio.h"
-
+#include "fsl_device_registers.h"
+#include "fsl_debug_console.h"
+#include "clock_config.h"
 #include "pin_mux.h"
 /*******************************************************************************
  * Definitions
@@ -78,25 +80,35 @@ int main(void)
     gpio_pin_config_t led_config = {
         kGPIO_DigitalOutput, 0,
     };
-
-    /* Board pin init */
-    BOARD_InitPins();
-
+    /* Variable Declaration */
+    char upSwing[10];
+    char downSwing[10];
+    /* Init board hardware. */
+        BOARD_InitPins();
+        BOARD_BootClockRUN();
+        BOARD_InitDebugConsole();
     /* Init output LED GPIO. */
     GPIO_PinInit(BOARD_LED_GPIO, BOARD_LED_GPIO_PIN, &led_config);
-
+    PRINTF("How long would you like the up swing to be?\r\n");
+   // upSwing = getchar();
+    scanf("%d",upSwing);
+    PRINTF("How long would you like the down swing to be?\r\n");
+    //downSwing = getchar();
     /* Set systick reload value to generate 1ms interrupt */
     if(SysTick_Config(SystemCoreClock / 500U))
     {
         while(1)
         {
+
         }
     }
 
     while (1)
     {
         /* Delay 1000 ms */
-        SysTick_DelayTicks(U);
+        SysTick_DelayTicks(500);
+        GPIO_PortToggle(BOARD_LED_GPIO, 1u << BOARD_LED_GPIO_PIN);
+        SysTick_DelayTicks(50U);
         GPIO_PortToggle(BOARD_LED_GPIO, 1u << BOARD_LED_GPIO_PIN);
     }
 }

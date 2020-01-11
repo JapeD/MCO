@@ -1,6 +1,6 @@
-20:39:24 **** Incremental Build of configuration Debug for project frdmk64f_hello_world ****
+15:27:08 **** Incremental Build of configuration Debug for project frdmk64f_hello_world ****
 make -r -j4 all 
 make: Nothing to be done for 'all'.
 
-20:39:24 Build Finished. 0 errors, 0 warnings. (took 132ms)
+15:27:09 Build Finished. 0 errors, 0 warnings. (took 217ms)
 
