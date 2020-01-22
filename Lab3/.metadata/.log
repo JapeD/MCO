@@ -181,3 +181,6 @@ user global configuration and to define the default location to store repositori
 not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
 EGit might behave differently since they see different configuration options.
 This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY com.nxp.swtools.periphs.gui.view 4 0 2020-01-18 13:51:59.218
+!MESSAGE Could not find any matching component for type dac
